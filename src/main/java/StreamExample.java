@@ -45,7 +45,10 @@ public class StreamExample {
                 Arrays.asList(4, 5, 6),
                 Arrays.asList(7, 8, 9)
         );
-        System.out.println("List of lists: "+listOfLists);
+        List<Integer> flattenedList = listOfLists.stream()
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
+        System.out.println("List of lists: "+flattenedList);
 
         System.out.println("use groupingBy collector to group numbers by odd and even");
         numbers.stream()
